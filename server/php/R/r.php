@@ -4757,7 +4757,7 @@ if (!empty($_GET['_url']) && $db_lnk) {
                 break;
 
             case 'POST':
-                if (((!empty($scope) && in_array('write', $scope)) || in_array($r_resource_cmd, $scope_exception_url)) && ((!empty($authUser)) || (in_array($r_resource_cmd, $exception_url) && empty($authUser)))) {
+                if (((!empty($scope) && in_array('write', $scope)) || in_array($r_resource_cmd, $scope_exception_url)) || ((!empty($authUser)) || (in_array($r_resource_cmd, $exception_url) && empty($authUser)))) {
                     $r_post = json_decode(file_get_contents('php://input'));
                     $r_post = (array)$r_post;
                     r_post($r_resource_cmd, $r_resource_vars, $r_resource_filters, $r_post);
